@@ -1,10 +1,10 @@
 <?php
 
-namespace EmployeeSchedule\Console\Commands;
+namespace SaltEmployeeSchedule\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class EmployeeScheduleCommand extends Command
+class SaltEmployeeScheduleCommand extends Command
 {
     /**
      * The name and signature of the console command.
