@@ -83,4 +83,29 @@ Route::namespace('SaltEmployeeSchedule\Controllers')
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
     Route::delete("schedule_organizations/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
 
+
+    // API: SCHEDULE EMPLOYEES
+    Route::get("schedule_employees", 'ApiSaltResourcesController@index'); // get entire collection
+    Route::post("schedule_employees", 'ApiSaltResourcesController@store'); // create new collection
+
+    Route::get("schedule_employees/trash", 'ApiSaltResourcesController@trash'); // trash of collection
+
+    Route::post("schedule_employees/import", 'ApiSaltResourcesController@import'); // import collection from external
+    Route::post("schedule_employees/export", 'ApiSaltResourcesController@export'); // export entire collection
+    Route::get("schedule_employees/report", 'ApiSaltResourcesController@report'); // report collection
+
+    Route::get("schedule_employees/{id}/trashed", 'ApiSaltResourcesController@trashed')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID from trash
+
+    // RESTORE data by ID (id), selected IDs (selected), and All data (all)
+    Route::post("schedule_employees/{id}/restore", 'ApiSaltResourcesController@restore')->where('id', '[a-zA-Z0-9-]+'); // restore collection by ID
+
+    // DELETE data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("schedule_employees/{id}/delete", 'ApiSaltResourcesController@delete')->where('id', '[a-zA-Z0-9-]+'); // hard delete collection by ID
+
+    Route::get("schedule_employees/{id}", 'ApiSaltResourcesController@show')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID
+    Route::put("schedule_employees/{id}", 'ApiSaltResourcesController@update')->where('id', '[a-zA-Z0-9-]+'); // update collection by ID
+    Route::patch("schedule_employees/{id}", 'ApiSaltResourcesController@patch')->where('id', '[a-zA-Z0-9-]+'); // patch collection by ID
+    // DESTROY data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("schedule_employees/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
+
 });
