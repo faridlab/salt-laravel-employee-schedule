@@ -34,4 +34,29 @@ Route::namespace('SaltEmployeeSchedule\Controllers')
     Route::delete("schedules/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
 
 
+    // API: SCHEDULE WEEKDAY
+    Route::get("schedule_weekday", 'ApiSaltResourcesController@index'); // get entire collection
+    Route::post("schedule_weekday", 'ApiSaltResourcesController@store'); // create new collection
+
+    Route::get("schedule_weekday/trash", 'ApiSaltResourcesController@trash'); // trash of collection
+
+    Route::post("schedule_weekday/import", 'ApiSaltResourcesController@import'); // import collection from external
+    Route::post("schedule_weekday/export", 'ApiSaltResourcesController@export'); // export entire collection
+    Route::get("schedule_weekday/report", 'ApiSaltResourcesController@report'); // report collection
+
+    Route::get("schedule_weekday/{id}/trashed", 'ApiSaltResourcesController@trashed')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID from trash
+
+    // RESTORE data by ID (id), selected IDs (selected), and All data (all)
+    Route::post("schedule_weekday/{id}/restore", 'ApiSaltResourcesController@restore')->where('id', '[a-zA-Z0-9-]+'); // restore collection by ID
+
+    // DELETE data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("schedule_weekday/{id}/delete", 'ApiSaltResourcesController@delete')->where('id', '[a-zA-Z0-9-]+'); // hard delete collection by ID
+
+    Route::get("schedule_weekday/{id}", 'ApiSaltResourcesController@show')->where('id', '[a-zA-Z0-9-]+'); // get collection by ID
+    Route::put("schedule_weekday/{id}", 'ApiSaltResourcesController@update')->where('id', '[a-zA-Z0-9-]+'); // update collection by ID
+    Route::patch("schedule_weekday/{id}", 'ApiSaltResourcesController@patch')->where('id', '[a-zA-Z0-9-]+'); // patch collection by ID
+    // DESTROY data by ID (id), selected IDs (selected), and All data (all)
+    Route::delete("schedule_weekday/{id}", 'ApiSaltResourcesController@destroy')->where('id', '[a-zA-Z0-9-]+'); // soft delete a collection by ID
+
+
 });
