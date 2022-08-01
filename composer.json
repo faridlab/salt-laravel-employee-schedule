@@ -25,18 +25,18 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "EmployeeSchedule\\": "src/"
+      "SaltEmployeeSchedule\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "EmployeeSchedule\\Tests\\": "tests/"
+      "SaltEmployeeSchedule\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "EmployeeSchedule\\Providers\\EmployeeScheduleServiceProvider"
+        "SaltEmployeeSchedule\\Providers\\SaltEmployeeScheduleServiceProvider"
       ]
     }
   },
