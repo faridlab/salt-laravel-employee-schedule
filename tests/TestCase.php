@@ -1,6 +1,6 @@
 <?php
 
-namespace EmployeeSchedule\Tests;
+namespace SaltEmployeeSchedule\Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Foundation\Application;
@@ -22,7 +22,7 @@ abstract class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            \EmployeeSchedule\Providers\EmployeeScheduleServiceProvider::class
+            \SaltEmployeeSchedule\Providers\SaltEmployeeScheduleServiceProvider::class
         ];
     }
 }
