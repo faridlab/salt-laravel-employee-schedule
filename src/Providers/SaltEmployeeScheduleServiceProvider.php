@@ -1,10 +1,10 @@
 <?php
 
-namespace EmployeeSchedule\Providers;
+namespace SaltEmployeeSchedule\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class EmployeeScheduleServiceProvider extends ServiceProvider
+class SaltEmployeeScheduleServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -18,9 +18,9 @@ class EmployeeScheduleServiceProvider extends ServiceProvider
          *
          * Uncomment this function call to make the config file publishable using the 'config' tag.
          */
-        // $this->publishes([
-        //     __DIR__.'/../../config/employee-schedule.php' => config_path('employee-schedule.php'),
-        // ], 'config');
+        $this->publishes([
+            __DIR__.'/../../config/employee-schedule.php' => config_path('employee-schedule.php'),
+        ], 'employee-schedule-config');
 
         /**
          * Routes
@@ -29,6 +29,7 @@ class EmployeeScheduleServiceProvider extends ServiceProvider
          * A web.php file has already been generated.
          */
         // $this->loadRoutesFrom(__DIR__.'/../../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../../routes/api.php');
 
         /**
          * Translations
@@ -62,7 +63,7 @@ class EmployeeScheduleServiceProvider extends ServiceProvider
          */
         // if ($this->app->runningInConsole()) {
         //     $this->commands([
-        //         \EmployeeSchedule\Console\Commands\EmployeeScheduleCommand::class,
+        //         \SaltEmployeeSchedule\Console\Commands\SaltEmployeeScheduleCommand::class,
         //     ]);
         // }
 
@@ -82,9 +83,9 @@ class EmployeeScheduleServiceProvider extends ServiceProvider
          * Uncomment the second function call to make the migrations publishable using the 'migrations' tags.
          */
         // $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        // $this->publishes([
-        //     __DIR__.'/../../database/migrations/' => database_path('migrations')
-        // ], 'migrations');
+        $this->publishes([
+            __DIR__.'/../../database/migrations/' => database_path('migrations')
+        ], 'employee-schedule-migrations');
     }
 
     /**
