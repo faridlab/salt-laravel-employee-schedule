@@ -2,12 +2,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use SaltEmployeeSchedule\Controllers\ApiEmployeeResourcesController;
+// use SaltEmployeeSchedule\Controllers\ApiEmployeeResourcesController;
 // use SaltEmployeeSchedule\Controllers\ApiNestedResourcesController;
 
 use SaltEmployeeSchedule\Controllers\SchedulesController;
 use SaltEmployeeSchedule\Controllers\ScheduleEmployeesController;
 use SaltEmployeeSchedule\Controllers\ScheduleOrganizationsController;
+use SaltEmployeeSchedule\Controllers\ScheduleWeekdayController;
 
 $version = config('app.API_VERSION', 'v1');
 
@@ -41,28 +42,28 @@ Route::middleware(['api'])
 
 
     // API: SCHEDULE WEEKDAY
-    Route::get("schedule_weekday", [ApiEmployeeResourcesController::class, 'index'])->middleware(['auth:api']); // get entire collection
-    Route::post("schedule_weekday", [ApiEmployeeResourcesController::class, 'store'])->middleware(['auth:api']); // create new collection
+    Route::get("schedule_weekday", [ScheduleWeekdayController::class, 'index'])->middleware(['auth:api']); // get entire collection
+    Route::post("schedule_weekday", [ScheduleWeekdayController::class, 'store'])->middleware(['auth:api']); // create new collection
 
-    Route::get("schedule_weekday/trash", [ApiEmployeeResourcesController::class, 'trash'])->middleware(['auth:api']); // trash of collection
+    Route::get("schedule_weekday/trash", [ScheduleWeekdayController::class, 'trash'])->middleware(['auth:api']); // trash of collection
 
-    Route::post("schedule_weekday/import", [ApiEmployeeResourcesController::class, 'import'])->middleware(['auth:api']); // import collection from external
-    Route::post("schedule_weekday/export", [ApiEmployeeResourcesController::class, 'export'])->middleware(['auth:api']); // export entire collection
-    Route::get("schedule_weekday/report", [ApiEmployeeResourcesController::class, 'report'])->middleware(['auth:api']); // report collection
+    Route::post("schedule_weekday/import", [ScheduleWeekdayController::class, 'import'])->middleware(['auth:api']); // import collection from external
+    Route::post("schedule_weekday/export", [ScheduleWeekdayController::class, 'export'])->middleware(['auth:api']); // export entire collection
+    Route::get("schedule_weekday/report", [ScheduleWeekdayController::class, 'report'])->middleware(['auth:api']); // report collection
 
-    Route::get("schedule_weekday/{id}/trashed", [ApiEmployeeResourcesController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
+    Route::get("schedule_weekday/{id}/trashed", [ScheduleWeekdayController::class, 'trashed'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID from trash
 
     // RESTORE data by ID (id), selected IDs (selected), and All data (all)
-    Route::post("schedule_weekday/{id}/restore", [ApiEmployeeResourcesController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
+    Route::post("schedule_weekday/{id}/restore", [ScheduleWeekdayController::class, 'restore'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // restore collection by ID
 
     // DELETE data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("schedule_weekday/{id}/delete", [ApiEmployeeResourcesController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
+    Route::delete("schedule_weekday/{id}/delete", [ScheduleWeekdayController::class, 'delete'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // hard delete collection by ID
 
-    Route::get("schedule_weekday/{id}", [ApiEmployeeResourcesController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
-    Route::put("schedule_weekday/{id}", [ApiEmployeeResourcesController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
-    Route::patch("schedule_weekday/{id}", [ApiEmployeeResourcesController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
+    Route::get("schedule_weekday/{id}", [ScheduleWeekdayController::class, 'show'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // get collection by ID
+    Route::put("schedule_weekday/{id}", [ScheduleWeekdayController::class, 'update'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // update collection by ID
+    Route::patch("schedule_weekday/{id}", [ScheduleWeekdayController::class, 'patch'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // patch collection by ID
     // DESTROY data by ID (id), selected IDs (selected), and All data (all)
-    Route::delete("schedule_weekday/{id}", [ApiEmployeeResourcesController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
+    Route::delete("schedule_weekday/{id}", [ScheduleWeekdayController::class, 'destroy'])->where('id', '[a-zA-Z0-9-]+')->middleware(['auth:api']); // soft delete a collection by ID
 
 
     // API: SCHEDULE ORGANIZATION STRUCTURE (Department, Level, Position)
